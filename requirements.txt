@@ -1,0 +1,6 @@
+pandas
+numpy
+datasketch
+matplotlib
+psutil
+jupyter
