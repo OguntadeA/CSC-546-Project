@@ -1,0 +1,2 @@
+permutations,rows_per_band,candidates,verified_pairs,precision,recall,total_time
+128,4,78,38,1.0,1.0,4.121779800043441
