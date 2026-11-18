@@ -1,0 +1,2 @@
+reviews,num_perm,bands,rows_per_band,candidate_pairs,verified_pairs,baseline_pairs,recovered_pairs,recall,candidate_precision,runtime_seconds
+1000,128,16,8,40,38,38,38,1.0,0.95,0.35764816612936556
