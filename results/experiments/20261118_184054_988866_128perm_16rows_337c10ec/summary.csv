@@ -1,0 +1,2 @@
+run_id,reviews,permutations,bands,rows_per_band,threshold,possible_pairs,candidate_pairs,verified_pairs,baseline_pairs,recovered_pairs,candidate_precision,candidate_recall,final_precision,final_recall,minhash_time,lsh_time,verification_time,total_time
+20261118_184054_988866_128perm_16rows_337c10ec,1000,128,8,16,0.8,499500,33,33,38,33,1.0,0.868421052631579,1.0,0.868421052631579,13.770777799999905,1.2401061999999001,0.07638959999985673,15.087273599999662

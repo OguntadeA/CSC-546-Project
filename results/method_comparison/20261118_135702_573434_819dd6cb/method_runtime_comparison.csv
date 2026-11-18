@@ -1,0 +1,3 @@
+method,average_runtime_seconds
+Exact Jaccard,5.905768100000023
+MinHash + LSH,2.498766433329365

@@ -1,0 +1,2 @@
+run_id,reviews,permutations,bands,rows_per_band,threshold,possible_pairs,candidate_pairs,verified_pairs,baseline_pairs,recovered_pairs,candidate_precision,candidate_recall,final_precision,final_recall,minhash_time,lsh_time,verification_time,total_time
+20261118_182146_814930_128perm_4rows_dc093826,1000,128,32,4,0.8,499500,78,38,38,38,0.48717948717948717,1.0,1.0,1.0,2.281413500000099,0.16213919999995596,0.011494099999936225,2.455046799999991

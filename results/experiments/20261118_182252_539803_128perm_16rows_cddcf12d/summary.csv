@@ -1,0 +1,2 @@
+run_id,reviews,permutations,bands,rows_per_band,threshold,possible_pairs,candidate_pairs,verified_pairs,baseline_pairs,recovered_pairs,candidate_precision,candidate_recall,final_precision,final_recall,minhash_time,lsh_time,verification_time,total_time
+20261118_182252_539803_128perm_16rows_cddcf12d,1000,128,8,16,0.8,499500,33,33,38,33,1.0,0.868421052631579,1.0,0.868421052631579,2.428937899999937,0.09555660000000898,0.002474299999903451,2.5269687999998496
