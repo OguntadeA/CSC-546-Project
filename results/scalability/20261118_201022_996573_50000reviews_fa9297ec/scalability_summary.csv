@@ -1,0 +1,2 @@
+reviews,permutations,rows_per_band,possible_pairs,candidate_pairs,verified_pairs,comparison_reduction_percent,loading_time,shingling_time,minhash_time,lsh_time,verification_time,total_time,max_observed_rss_mb
+50000,128,8,1249975000,624422,622421,99.95004524090481,3.5465236000000004,2.689788799998496,92.26288620000014,11.873670299999503,0.8938395000004675,111.2715541000016,495.640625

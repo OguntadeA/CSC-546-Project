@@ -132,3 +132,107 @@ print("Total experiment runs:", len(all_runs))
 print("\nComparison results:")
 print(comparison.to_string(index=False))
 print("\nSaved to:", output_dir)
+
+
+# SCALABILITY ANALYSIS
+
+from pathlib import Path
+import pandas as pd
+import matplotlib.pyplot as plt
+
+root = Path(__file__).resolve().parents[1]
+
+scalability_files = sorted(
+    (root / "results" / "scalability").glob(
+        "*/scalability_summary.csv"
+    )
+)
+
+if not scalability_files:
+    raise SystemExit("No scalability results found.")
+
+# Combine saved measurements
+scalability = pd.concat(
+    [pd.read_csv(file) for file in scalability_files],
+    ignore_index=True
+)
+
+# For now, use the latest run at each size.
+# single-run measurements
+scalability = (
+    scalability
+    .drop_duplicates(subset=["reviews"], keep="last")
+    .sort_values("reviews")
+)
+
+# Save the latest analysis in stable locations
+figures_dir = root / "results" / "figures"
+figures_dir.mkdir(parents=True, exist_ok=True)
+
+scalability.to_csv(
+    root / "results" / "scalability_comparison.csv",
+    index=False
+)
+
+# Graph runtime, memory, and candidate reduction
+graphs = [
+    (
+        "total_time",
+        "Runtime vs. Dataset Size",
+        "Runtime (seconds)",
+        "scalability_runtime.png"
+    ),
+    (
+        "max_observed_rss_mb",
+        "Memory Usage vs. Dataset Size",
+        "Maximum Sampled RSS (MB)",
+        "scalability_memory.png"
+    ),
+    (
+        "candidate_pairs",
+        "LSH Candidates vs. Dataset Size",
+        "Candidate Pairs",
+        "scalability_candidates.png"
+    ),
+    (
+        "comparison_reduction_percent",
+        "Candidate Reduction vs. Dataset Size",
+        "Reduction (%)",
+        "scalability_reduction.png"
+    )
+]
+
+for column, title, ylabel, filename in graphs:
+
+    plt.figure(figsize=(9, 5))
+
+    plt.plot(
+        scalability["reviews"],
+        scalability[column],
+        marker="o"
+    )
+
+    plt.title(title)
+    plt.xlabel("Number of Amazon Reviews")
+    plt.ylabel(ylabel)
+    plt.grid(alpha=0.3)
+    plt.tight_layout()
+
+    plt.savefig(figures_dir / filename, dpi=300)
+    plt.close()
+
+print("\nFINAL SCALABILITY SUMMARY")
+print(
+    scalability[
+        [
+            "reviews",
+            "candidate_pairs",
+            "verified_pairs",
+            "total_time",
+            "max_observed_rss_mb",
+            "comparison_reduction_percent"
+        ]
+    ].to_string(index=False)
+)
+
+print("\nScalability graphs saved to:", figures_dir)
